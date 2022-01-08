@@ -1,11 +1,15 @@
 package com.spring.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +36,6 @@ public class MemberController {
 	
 	@Autowired
 	private HttpSession session;
-	
-	
 	
 	@RequestMapping("join")
 	public String memberJoin() {
@@ -73,13 +75,15 @@ public class MemberController {
 	
 	@RequestMapping("mypage")
 	public String mypage(Model model) throws Exception {
-		String id = (String) session.getAttribute("loginID");
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+		
+		String id = ((UserDetails)principal).getUsername(); 
+			
 		MemberDTO member = memberService.findById(id);
 		model.addAttribute("member", member);
-		
-		
+			
 		return "/member/mypage";
-		
 		
 	}
 	
@@ -87,6 +91,6 @@ public class MemberController {
 	public String updateProc(MemberDTO memberDTO) {
 	int result = memberService.update(memberDTO);
 		
-		return "home";
+		return "redirect:/";
 	}
 }	

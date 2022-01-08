@@ -24,6 +24,11 @@
   <select id="findById" resultType="com.spring.dto.MemberDTO">
   	select * from members where id = #{id}
   </select>
+  
+  <update id="update" parameterType="com.spring.dto.MemberDTO">
+  	update members set pw = #{pw},name=#{name},phone=#{phone},email=#{email},zipcode=#{zipcode},address1=#{address1},address2=#{address2}
+  	where id = #{id}
+  </update>
   </mapper>
   
   

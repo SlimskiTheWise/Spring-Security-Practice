@@ -54,8 +54,8 @@ public class MemberDAO {
 	}
 
 	public int update(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return mybatis.update("Members.update",memberDTO);
 	}
 	
 }

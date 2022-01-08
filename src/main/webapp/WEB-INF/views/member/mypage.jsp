@@ -18,10 +18,10 @@
 </head>
 <body>
 	<form action="/member/updateProc" method=post>
-	<c:forEach var="m" items="${member }">
+	
   <div class="form-group">
     <label for="uname">ID:</label>
-    <input type="text" class="form-control" id="id" value=${m.id } name="id" readOnly>
+    <input type="text" class="form-control" id="id" value=${member.id } name="id" readOnly>
   </div>
   
   <div class="form-group">
@@ -32,25 +32,25 @@
   
   <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" class="form-control" id="pwd"  value=${m.name } name="name" required>
+    <input type="text" class="form-control" id="pwd"  value=${member.name } name="name" required>
    
   </div>
   
   <div class="form-group">
     <label for="phone">Phone Number:</label>
-    <input type="text" class="form-control" id="phone"  value=${m.phone } name="phone" required>
+    <input type="text" class="form-control" id="phone"  value=${member.phone } name="phone" required>
     
   </div>
   
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="text" class="form-control" id="email"  value=${m.email } name="email" required>
+    <input type="text" class="form-control" id="email"  value=${member.email } name="email" required>
     
   </div>
   
   <div class="form-group">
     <label for="zipcode">Zipcode:</label>
-    <input type="text" class="form-control" id="zipcode"  value=${m.zipcode } name="zipcode" required>
+    <input type="text" class="form-control" id="zipcode"  value=${member.zipcode } name="zipcode" required>
     
   </div>
   
@@ -58,16 +58,16 @@
   
   <div class="form-group">
     <label for="address1">Address1:</label>
-    <input type="text" class="form-control" id="address1"  value=${m.address1 } name="address1" required>
+    <input type="text" class="form-control" id="address1"  value=${member.address1 } name="address1" required>
     
   </div>
   
   <div class="form-group">
     <label for="address2">Address2:</label>
-    <input type="text" class="form-control" id="address2"  value=${m.address2 } name="address2" required>
+    <input type="text" class="form-control" id="address2"  value=${member.address2 } name="address2" required>
     
   </div>
-  </c:forEach>
+ 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

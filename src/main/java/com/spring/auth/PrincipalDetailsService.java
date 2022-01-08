@@ -3,6 +3,8 @@ package com.spring.auth;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -27,9 +29,12 @@ public class PrincipalDetailsService implements UserDetailsService {
     //시큐리티 session(내부 Authentication(내부 UserDetails)) =
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        System.out.println("username: " + id);
+      
         MemberDTO userEntity = memberDAO.findById(id);
-        System.out.println("userEntity: " + userEntity);
+        
+       
+        
+       
         if(userEntity != null){
 //            return new PrincipalDetails(userEntity);
             return new User(userEntity.getId(),userEntity.getPw(),AuthorityUtils.createAuthorityList(userEntity.getRole()));

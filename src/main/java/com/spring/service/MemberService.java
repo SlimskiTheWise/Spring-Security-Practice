@@ -52,6 +52,10 @@ public class MemberService {
 
 	public int update(MemberDTO memberDTO) {
 		
+		String rawPassword = memberDTO.getPw();
+	    String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+	    memberDTO.setPw(encPassword);
+		
 		return memberDAO.update(memberDTO);
 	}
 	
